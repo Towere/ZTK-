@@ -1,0 +1,12 @@
+<!-- resources/mapper/AdminMapper.xml -->
+
+<mapper namespace="cn.gdsdxy.questionbank.repository.MultiQuestionRepository">
+    <insert id="saveAll" parameterType="java.util.List">
+        INSERT INTO multi_question (subject, question, answer_a, answer_b, answer_c, answer_d, right_answer, analysis, score, section, level)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.subject}, #{item.question}, #{item.answerA}, #{item.answerB}, #{item.answerC}, #{item.answerD}, #{item.rightAnswer}, #{item.analysis}, #{item.score}, #{item.section}, #{item.level})
+        </foreach>
+    </insert>
+</mapper>
+

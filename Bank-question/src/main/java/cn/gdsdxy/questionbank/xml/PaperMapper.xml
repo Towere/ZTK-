@@ -1,0 +1,5 @@
+<!-- PaperManageMapper.xml -->
+<insert id="insert" parameterType="cn.gdsdxy.questionbank.entity.manage.PaperManage">
+    INSERT INTO paper_manage (paper_id, question_id, question_type)
+    VALUES (#{paperId}, #{questionId}, #{questionType})
+</insert>

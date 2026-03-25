@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 命名空间必须与接口全路径一致 -->
+<mapper namespace="cn.gdsdxy.questionbank.repository.QuestionRepository">
+
+    <!-- ID 必须与接口方法名完全一致 -->
+    <select id="selectByKnowledgeAndDifficulty" resultType="cn.gdsdxy.questionbank.entity.questions.Question">
+        SELECT * FROM question
+        WHERE
+        -- 匹配知识点 ID 列表（使用 foreach 遍历集合）
+        knowledge_id IN
+        <foreach collection="knowledgeIds" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+        -- 匹配难度等级
+        AND difficulty = #{difficulty}
+        -- 只查询有效题目
+        AND is_valid = 1
+    </select>
+
+</mapper>

@@ -1,0 +1,7 @@
+<!-- resources/mapper/AdminMapper.xml -->
+
+<mapper namespace="com.example.mapper.AdminMapper">
+    <select id="findByUsername" parameterType="int" resultType="com.example.model.Admin">
+        select adminId,adminName,sex,tel,email,cardId,role from admin where adminId = #{username} and pwd = #{password}
+    </select>
+</mapper>

@@ -1,0 +1,25 @@
+package cn.gdsdxy.questionbank.entity;
+
+import cn.gdsdxy.questionbank.entity.manage.Replay;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
+
+import java.util.Date;
+import java.util.List;
+
+@Data
+public class Message {
+    @TableId
+    private Integer id;
+//    private Integer temp_id;//解决id为null创建的一个临时id
+
+    private String title;
+
+    private String content;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone="GMT+8")
+    private Date time;
+
+//    List<Replay> replays;   //一对多关系，评论信息
+}
